@@ -90,5 +90,15 @@ function testAPI() {
         console.log('Successful login for: ' + response.name);
         document.getElementById('navbar').innerHTML =
             '<form class="navbar-form navbar-right" style="color: #CCCCCC">' + response.name + '</form>';
+        document.getElementById('status').innerHTML =
+            '<button class="btn btn-default">Calculate</button>';
+
+    });
+}
+
+function countLikes() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me/posts', function(response) {
+        console.log(response);
     });
 }
