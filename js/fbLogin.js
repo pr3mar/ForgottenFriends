@@ -78,15 +78,18 @@ $("#calculate").click(function(){
     FB.api('/me/feed', function(response) {
         var ids = {};
         for(el in response.data) {
-            var tmp = response.data[el].likes.data;
-            for(person in tmp) {
-                console.log(tmp[person]);
-                console.log(tmp[person].id)
-                if (tmp[person].id in ids) {
-                    ids[tmp[person].id] += 1;
-                } else {
-                    ids[tmp[person].id] = 1;
+            var likes = response.data[el].likes.data;
+            try {
+                for (person in likes) {
+                    console.log(likes[person]);
+                    if (likes[person].id in ids) {
+                        ids[likes[person].id] += 1;
+                    } else {
+                        ids[likes[person].id] = 1;
+                    }
                 }
+            } catch(e) {
+                console.log("error: ", e);
             }
         }
         console.log("ids:", ids);
