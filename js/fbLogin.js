@@ -79,10 +79,11 @@ $("#calculate").click(function(){
         var ids = {};
         for(i = 0; i < response.length; i++) {
             for (j = 0; j < response[i].likes.length; j++) {
-                if (el in ids) {
-                    ids[el] += 1;
+                var tmp = response[i].likes[j].id;
+                if (tmp in ids) {
+                    ids[tmp] += 1;
                 } else {
-                    ids[el] = 1;
+                    ids[tmp] = 1;
                 }
             }
         }
