@@ -77,7 +77,7 @@ $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me/feed', function(response) {
         var ids = {};
-        response.forEach(function(el) {
+        for(i = 0; i < response.length; i++) {
             el.likes.forEach(function(likes) {
                 if (el in ids) {
                     ids[el] += 1;
@@ -85,7 +85,7 @@ $("#calculate").click(function(){
                     ids[el] = 1;
                 }
             });
-        });
+        }
         console.log(ids);
-    })
+    });
 });
