@@ -75,11 +75,11 @@ function initializeData() {
 
 $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me/feed', function(response) {
+    FB.api('/me/feed',{'limit': '100'}, function(response) {
         var ids = {};
         for(el in response.data) {
-            var likes = response.data[el].likes.data;
             try {
+                var likes = response.data[el].likes.data;
                 for (person in likes) {
                     console.log(likes[person]);
                     if (likes[person].id in ids) {
