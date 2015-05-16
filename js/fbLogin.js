@@ -78,9 +78,10 @@ $("#calculate").click(function(){
     FB.api('/me/feed', function(response) {
         var ids = {};
         for(el in response.data) {
-            var tmp = response.data[el].likes;
+            var tmp = response.data[el].likes.data;
             for(person in tmp) {
                 console.log(tmp[person]);
+                console.log(tmp[person].id)
                 if (tmp[person].id in ids) {
                     ids[tmp[person].id] += 1;
                 } else {
@@ -88,18 +89,6 @@ $("#calculate").click(function(){
                 }
             }
         }
-        //for(i = 0; i < response.length; i++) {
-        //    console.log(response[i])
-        //    for (j = 0; j < response[i].likes.length; j++) {
-        //        var tmp = response[i].likes[j].id;
-        //        console.log(tmp);
-        //        if (tmp in ids) {
-        //            ids[tmp] += 1;
-        //        } else {
-        //            ids[tmp] = 1;
-        //        }
-        //    }
-        //}
-        console.log(ids);
+        console.log("ids:", ids);
     });
 });
