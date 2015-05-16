@@ -2,6 +2,19 @@
  * Created by pr3mar on 16.05.2015.
  */
 // This is called with the results from from FB.getLoginStatus().
+$(document).ready(function() {
+    $.ajaxSetup({ cache: true });
+    $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+        FB.init({
+            appId: '456455124529286',
+            version: 'v2.3' // or v2.0, v2.1, v2.0
+        });
+        $('#loginbutton,#feedbutton').removeAttr('disabled');
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
+    });
+});
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -35,7 +48,7 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
     FB.init({
-        appId      : '456446581196807',
+        appId      : '456455124529286',//'456446581196807',
         cookie     : true,  // enable cookies to allow the server to access
                             // the session
         xfbml      : true,  // parse social plugins on this page
