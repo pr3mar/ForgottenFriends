@@ -43,7 +43,7 @@ function statusChangeCallback(response) {
 // Button.  See the onlogin handler attached to it in the sample
 // code below.
 function checkLoginState(func) {
-    FB.getLoginStatus(function(response) {
+    FB.getLoginStatus(function(response, func) {
         if (response.status === 'connected') {
             // Logged into your app and Facebook.
             //initializeData();
