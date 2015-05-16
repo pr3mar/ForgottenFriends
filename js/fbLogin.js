@@ -77,18 +77,19 @@ $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me/feed', function(response) {
         var ids = {};
-        for(i = 0; i < response.length; i++) {
-            console.log(response[i])
-            for (j = 0; j < response[i].likes.length; j++) {
-                var tmp = response[i].likes[j].id;
-                console.log(tmp);
-                if (tmp in ids) {
-                    ids[tmp] += 1;
-                } else {
-                    ids[tmp] = 1;
-                }
-            }
-        }
+        console.log(response.length, response.id);
+        //for(i = 0; i < response.length; i++) {
+        //    console.log(response[i])
+        //    for (j = 0; j < response[i].likes.length; j++) {
+        //        var tmp = response[i].likes[j].id;
+        //        console.log(tmp);
+        //        if (tmp in ids) {
+        //            ids[tmp] += 1;
+        //        } else {
+        //            ids[tmp] = 1;
+        //        }
+        //    }
+        //}
         console.log(ids);
     });
 });
