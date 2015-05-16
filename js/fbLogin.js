@@ -78,7 +78,7 @@ $("#calculate").click(function(){
     var d = new Date();
     d.setMonth(d.getMonth() - 3);
     console.log(d.getTime());
-    FB.api('/me/posts',{'since': d.getTime(),'limit': '500'}, function(response) {
+    FB.api('/me/posts',{/*'since': d.getTime(),*/'limit': '500'}, function(response) {
         var ids = {};
         console.log(response);
         for(el in response.data) {
