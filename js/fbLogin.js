@@ -82,7 +82,7 @@ $("#calculate").click(function(){
                 var likes = response.data[el].likes.data;
                 for (person in likes) {
                     console.log(likes[person]);
-                    if (likes[person].id in ids) {
+                    if (likes[person].name in ids) {
                         ids[likes[person].name] += 1;
                         //ids[likes[person].id] += 1;
                     } else {
