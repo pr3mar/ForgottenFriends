@@ -75,7 +75,7 @@ function initializeData() {
 
 $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me/feed', function(response) {
+    FB.api('/me/posts', function(response) {
         console.log(response.id);
     })
 });
