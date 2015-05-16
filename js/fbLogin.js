@@ -89,6 +89,6 @@ function testAPI() {
     FB.api('/me', function(response) {
         console.log('Successful login for: ' + response.name);
         document.getElementById('navbar').innerHTML =
-            '<form class="navbar-form navbar-right">Logged in!</form>';
+            '<form class="navbar-form navbar-right" style="color: white">' + response.name + '</form>';
     });
 }
