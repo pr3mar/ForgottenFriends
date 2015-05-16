@@ -83,9 +83,11 @@ $("#calculate").click(function(){
                 for (person in likes) {
                     console.log(likes[person]);
                     if (likes[person].id in ids) {
-                        ids[likes[person].id] += 1;
+                        ids[likes[person].name] += 1;
+                        //ids[likes[person].id] += 1;
                     } else {
-                        ids[likes[person].id] = 1;
+                        ids[likes[person].name] = 1;
+                        //ids[likes[person].id] = 1;
                     }
                 }
             } catch(e) {
