@@ -75,7 +75,9 @@ function initializeData() {
 
 $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me/feed',{'limit': '100'}, function(response) {
+    var d = new Date();
+    d.setMonth(d.getMonth() - 3);
+    FB.api('/me/posts',{'since':d,'limit': '500'}, function(response) {
         var ids = {};
         for(el in response.data) {
             try {
