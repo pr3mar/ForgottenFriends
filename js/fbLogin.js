@@ -78,7 +78,7 @@ $("#calculate").click(function(){
     FB.api('/me/feed', function(response) {
         var ids = {};
         for(i = 0; i < response.length; i++) {
-            for (j = 0; j < response[i].length; j++) {
+            for (j = 0; j < response[i].likes.length; j++) {
                 if (el in ids) {
                     ids[el] += 1;
                 } else {
