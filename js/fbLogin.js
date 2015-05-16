@@ -80,13 +80,13 @@ function initializeData() {
         document.getElementById('navbar').innerHTML =
             '<form class="navbar-form navbar-right" style="color: #CCCCCC">' + response.name + '</form>';
         document.getElementById('calculate').innerHTML =
-            ' <p><a class="btn btn-default" role="button">Calculate &raquo;</a></p>';
+            ' <p><a class="btn btn-default" role="button" id="calculate">Calculate &raquo;</a></p>';
     });
 }
 
-function countLikes() {
+$("calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me/posts', function(response) {
         console.log(response);
-    });
-}
+    })
+});
