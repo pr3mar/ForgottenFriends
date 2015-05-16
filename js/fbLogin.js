@@ -44,7 +44,7 @@ function statusChangeCallback(response) {
 // code below.
 function checkLoginState(func) {
     FB.getLoginStatus(function(response, func) {
-        if(statusChangeCallback()) {
+        if(statusChangeCallback(response)) {
             func();
         }
     });
