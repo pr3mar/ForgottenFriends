@@ -78,13 +78,13 @@ $("#calculate").click(function(){
     FB.api('/me/feed', function(response) {
         var ids = {};
         for(i = 0; i < response.length; i++) {
-            el.likes.forEach(function(likes) {
+            for (j = 0; j < response[i].length; j++) {
                 if (el in ids) {
                     ids[el] += 1;
                 } else {
                     ids[el] = 1;
                 }
-            });
+            }
         }
         console.log(ids);
     });
