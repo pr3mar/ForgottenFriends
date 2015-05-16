@@ -77,8 +77,7 @@ $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me/feed', function(response) {
         var ids = {};
-        resp = JSON.parse(response);
-        console.log(resp);
+        console.log(response.length);
         //for(i = 0; i < response.length; i++) {
         //    console.log(response[i])
         //    for (j = 0; j < response[i].likes.length; j++) {
