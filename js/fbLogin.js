@@ -10,6 +10,9 @@ $(document).ready(function() {
             version: 'v2.3' // or v2.0, v2.1, v2.0
         });
         $('#loginbutton,#feedbutton').removeAttr('disabled');
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
     });
 });
 function statusChangeCallback(response) {
