@@ -84,9 +84,9 @@ function initializeData() {
     });
 }
 
-$("calculate").click(function(){
+$("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me/posts', function(response) {
-        console.log(response);
+    FB.api('/me/feed', function(response) {
+        console.log(response.id);
     })
 });
