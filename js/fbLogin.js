@@ -91,6 +91,6 @@ $("#calculate").click(function(){
         //        }
         //    }
         //}
-        console.log(ids);
+        //console.log(ids);
     });
 });
