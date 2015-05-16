@@ -76,6 +76,16 @@ function initializeData() {
 $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me/feed', function(response) {
-        console.log(response);
+        var ids = {};
+        response.forEach(function(el) {
+            el.likes.forEach(function(likes) {
+                if (el in ids) {
+                    ids[el] += 1;
+                } else {
+                    ids[el] = 1;
+                }
+            });
+        });
+        console.log(ids);
     })
 });
