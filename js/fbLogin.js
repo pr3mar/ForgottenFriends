@@ -10,9 +10,7 @@ $(document).ready(function() {
             version: 'v2.3' // or v2.0, v2.1, v2.0
         });
         $('#loginbutton,#feedbutton').removeAttr('disabled');
-        if(checkLoginState()) {
-            initializeData();
-        }
+        checkLoginState(initializeData);
     });
 });
 function statusChangeCallback(response) {
@@ -42,11 +40,11 @@ function statusChangeCallback(response) {
 // This function is called when someone finishes with the Login
 // Button.  See the onlogin handler attached to it in the sample
 // code below.
-function checkLoginState() {
-    var ret = false;
+function checkLoginState(func) {
     FB.getLoginStatus(function(response) {
-        ret = statusChangeCallback(response);
-        return ret;
+        if (statusChangeCallback(response)) {
+            func();
+        }
     });
 }
 
