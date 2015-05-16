@@ -90,7 +90,7 @@ function testAPI() {
         console.log('Successful login for: ' + response.name);
         document.getElementById('navbar').innerHTML =
             '<form class="navbar-form navbar-right" style="color: #CCCCCC">' + response.name + '</form>';
-        document.getElementById('status').innerHTML =
+        document.getElementById('calculate').innerHTML =
             ' <p><a class="btn btn-default" role="button">Calculate &raquo;</a></p>';
 
     });
