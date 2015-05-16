@@ -77,10 +77,10 @@ $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
     var d = new Date();
     d.setMonth(d.getMonth() - 3);
-    console.log(d);
+    console.log(d.getTime());
     FB.api('/me/posts',{'since': d.getTime(),'limit': '500'}, function(response) {
         var ids = {};
-        console.log(response.data);
+        console.log(response);
         for(el in response.data) {
             try {
                 var likes = response.data[el].likes.data;
