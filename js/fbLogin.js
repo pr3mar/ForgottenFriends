@@ -91,7 +91,7 @@ function testAPI() {
         document.getElementById('navbar').innerHTML =
             '<form class="navbar-form navbar-right" style="color: #CCCCCC">' + response.name + '</form>';
         document.getElementById('status').innerHTML =
-            ' <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>';
+            ' <p><a class="btn btn-default" role="button">Calculate &raquo;</a></p>';
 
     });
 }
