@@ -10,6 +10,8 @@ $("#calculate").click(function(){
         for(el in response.data) {
             try {
                 var likes = response.data[el].likes.data;
+
+
                 var comments = response.data[el].comments.data;
                 for (person in likes) {
                     if (likes[person].name in data) {
