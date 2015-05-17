@@ -69,6 +69,6 @@ function initializeData() {
         document.getElementById('navbar').innerHTML =
             '<form class="navbar-form navbar-right" style="color: #CCCCCC">' + response.name + '</form>';
         document.getElementById('calculate').innerHTML =
-            ' <p><a class="btn btn-default btn-lg btn-danger" role="button" id="calculate">Calculate &raquo;</a></p>';
+            ' <p><a class="btn btn-lg btn-danger" role="button" id="calculate">Calculate &raquo;</a></p>';
     });
 }
