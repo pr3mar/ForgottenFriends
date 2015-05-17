@@ -5,44 +5,46 @@ $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
     var d = new Date();
     d.setMonth(d.getMonth() - 3);
-    FB.api('/me/posts',{'since': d.toISOString(),'limit': '500'}, function(response) {
-        var data = {};
-        for(el in response.data) {
-            try {
-                var likes = response.data[el].likes.data;
-
-
-                var comments = response.data[el].comments.data;
-                for (person in likes) {
-                    if (likes[person].name in data) {
-                        data[likes[person].name][0] += 1;
-                    } else {
-                        data[likes[person].name] = [1, 0, Number.MAX_VALUE];
-                    }
+    FB.api('/me', function(me){
+        me = me.id;
+        FB.api('/me/posts',{'since': d.toISOString(),'limit': '500'}, function(response) {
+            var data = {};
+            for(el in response.data) {
+                try {
+                    //var likes = response.data[el].likes.data;
+                    var id = response.data[el].id;
+                    //var comments = response.data[el].comments.data;
+                    FB.api(id+"/likes", {"limit":200}, function(response) {
+                        var likes = response.data;
+                        for (person in likes) {
+                            if (likes[person].name in data && likes[person].name != me) {
+                                data[likes[person].name][0] += 1;
+                            } else if(likes[person].name != me) {
+                                data[likes[person].name] = [1, Number.MAX_VALUE];
+                            }
+                        }
+                    });
+                    /*for (person in comments) {
+                        if (comments[person].from.name in data) {
+                            data[comments[person].from.name][1] += 1;
+                        } else {
+                            data[comments[person].from.name] = [0, 1, Number.MAX_VALUE];
+                        }
+                    }*/
+                } catch(e) {
+                    //console.log("undefined");
                 }
-                for (person in comments) {
-                    if (comments[person].from.name in data) {
-                        data[comments[person].from.name][1] += 1;
-                    } else {
-                        data[comments[person].from.name] = [0, 1, Number.MAX_VALUE];
-                    }
-                }
-            } catch(e) {
-                //console.log("undefined");
             }
-        }
-        //data = sortMapByValue(data);
-        FB.api('/me', function(response){
-            getMessages(data, response.id);
+            //data = sortMapByValue(data);
+            getMessages(data, me);
         });
-
     });
 });
 
 function sortMapByValue(map) {
     var tupleArray = [];
     for (var key in map) tupleArray.push([key, map[key]]);
-    tupleArray.sort(function (a, b) { return a[1][2] - b[1][2] });
+    tupleArray.sort(function (a, b) { return a[1][1] - b[1][1] });
     return tupleArray;
 }
 
@@ -69,7 +71,7 @@ function getMessages(data, me) {
         data = sortMapByValue(data);
         //console.log(data);
         for(i = 0; i < data.length; i++) {
-            console.log(data[i][0], data[i][1][0], data[i][1][1], data[i][1][2])
+            console.log(data[i][0], data[i][1][0], data[i][1][1])
         }
         criticalIndex = getCriticalIndex(data);
         printMoreThanWeek(data, criticalIndex);
