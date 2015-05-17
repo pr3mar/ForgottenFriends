@@ -5,11 +5,16 @@ $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
     var d = new Date();
     d.setMonth(d.getMonth() - 3);
-    FB.api('/me/posts',{'since': d.toISOString(),'limit': '500'}, function(response) {
+    FB.api('/me/posts',{'since': d.toISOString(),'summary':'true','limit': '500'}, function(response) {
         var data = {};
         for(el in response.data) {
             try {
                 var likes = response.data[el].likes.data;
+                var total = response.data[el].summary.data;
+                for (ntotal in total){
+                    console.log(ntotal);
+                }
+
                 var comments = response.data[el].comments.data;
                 for (person in likes) {
                     if (likes[person].name in data) {
