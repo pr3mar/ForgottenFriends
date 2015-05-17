@@ -5,7 +5,7 @@ $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
     var d = new Date();
     d.setMonth(d.getMonth() - 3);
-    FB.api('/me/feeds',{'since': d.toISOString(),'limit': '500'}, function(response) {
+    FB.api('/me/posts',{'since': d.toISOString(),'limit': '500'}, function(response) {
         var data = {};
         for(el in response.data) {
             try {
@@ -49,8 +49,9 @@ function sortMapByValue(map) {
 function getMessages(data, me) {
     var d = new Date();
     d.setMonth(d.getFullYear() - 1);
-    console.log("messages:")
+    console.log("messages:");
     FB.api('/me/inbox',{/*'since': d.toISOString()*/'limit': '500'}, function(response) {
+        console.log(response);
         for(i in response.data) {
             thread = response.data[i];
             for(j in thread.to.data) {
@@ -66,7 +67,7 @@ function getMessages(data, me) {
             }
         }
         data = sortMapByValue(data);
-        console.log(data);
+        //console.log(data);
         for(i = 0; i < data.length; i++) {
             console.log(data[i][0], data[i][1][0], data[i][1][1], data[i][1][2])
         }
