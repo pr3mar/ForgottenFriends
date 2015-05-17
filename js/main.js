@@ -96,11 +96,11 @@ function getCriticalIndex(data) {
 }
 
 function printMoreThanWeek(data, criticalIndex) {
-    //console.log(data);
     console.log(criticalIndex);
+    document.getElementById("forgotten").innerHTML =
+        '<table id="tabela-forgotten" class="table table-striped">' + response.name + '<thead><tr>Name</tr><tr>FB Link</tr></thead></table>';
     for(i = criticalIndex; i > (criticalIndex - 5); i--){
-        console.log("test");
-        console.log(data[i]);
+        //document.getElementById("tabela-forgotten").innerHTML =
     }
 }
 
