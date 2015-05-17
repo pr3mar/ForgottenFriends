@@ -30,6 +30,14 @@ $("#calculate").click(function(){
                 //console.log("undefined");
             }
         }
+        data = sortMapByValue(data);
         console.log("likes:", data);
     });
 });
+
+function sortMapByValue(map) {
+    var tupleArray = [];
+    for (var key in map) tupleArray.push([key, map[key]]);
+    tupleArray.sort(function (a, b) { return a[1][0] - b[1][0] });
+    return tupleArray;
+}
