@@ -79,7 +79,6 @@ $("#calculate").click(function(){
     d.setMonth(d.getMonth() - 3);
     FB.api('/me/posts',{'since': d.toISOString(),'limit': '500'}, function(response) {
         var data = {};
-        //console.log(response);
         for(el in response.data) {
             try {
                 var likes = response.data[el].likes.data;
