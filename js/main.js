@@ -40,7 +40,7 @@ $("#calculate").click(function(){
 function sortMapByValue(map) {
     var tupleArray = [];
     for (var key in map) tupleArray.push([key, map[key]]);
-    tupleArray.sort(function (a, b) { return a[1][0] < b[1][0] });
+    tupleArray.sort(function (a, b) { return a[1][2] < b[1][2] });
     return tupleArray;
 }
 
@@ -55,16 +55,19 @@ function getMessages(data, me) {
                 //console.log(j, thread.to.data[j].name, thread.to.data[j].id, me);
                 if(thread.to.data[j].name in data && thread.to.data[j].id != me) {
                     var tmp = (new Date().getTime()) - (new Date(response.data[i].updated_time)).getTime();
-                    console.log(thread.to.data[j].name, (new Date()).getTime(), (new Date(response.data[i].updated_time)).getTime(), tmp);
+                    //console.log(thread.to.data[j].name, (new Date()).getTime(), (new Date(response.data[i].updated_time)).getTime(), tmp);
                     if(data[thread.to.data[j].name].length == 2) {
                         data[thread.to.data[j].name].push(tmp);
                     } else if(data[thread.to.data[j].name][2] > tmp) {
                         data[thread.to.data[j].name][2] = tmp;
                     }
-                    console.log(data[thread.to.data[j].name]);
+                    //console.log(data[thread.to.data[j].name]);
                 }
             }
         }
-        console.log(data);
+        data = sortMapByValue(data);
+        for(i = 0; i < data.length; i++) {
+            console.log(data[i][0], data[i][1][0], data[i][1][1], data[i][1][2])
+        }
     });
 }
