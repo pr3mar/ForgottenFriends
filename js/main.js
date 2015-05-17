@@ -101,10 +101,10 @@ function getCriticalIndex(data) {
 function printMoreThanWeek(data, criticalIndex) {
     console.log(criticalIndex);
     document.getElementById("forgotten").innerHTML =
-        '<table class="table table-striped"><thead><tr><td>Name</td><td>FB Link</td></tr></thead><tbody id="tabela-forgotten"></tbody></table>';
-    for(i = criticalIndex; i > (criticalIndex - 5); i--){
+        '<table class="table table-striped"><thead><tr><td>Name</td><td>FB Link</td></tr></thead><tbody><tr><th>' + data[criticalIndex] + '</th></tr></tbody></table>';
+    /*for(i = criticalIndex; i > (criticalIndex - 5); i--){
         document.getElementById("tabela-forgotten").innerHTML = '<tr><th>' + data[i] + '</th></tr>'
-    }
+    }*/
 }
 
 function printDeletionProposal(data, criticalIndex) {
