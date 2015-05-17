@@ -5,7 +5,7 @@ $("#calculate").click(function(){
     console.log('Welcome!  Fetching your information.... ');
     var d = new Date();
     d.setMonth(d.getMonth() - 3);
-    FB.api('/me/posts',{'since': d.toISOString(),'limit': '500'}, function(response) {
+    FB.api('/me/feeds',{'since': d.toISOString(),'limit': '500'}, function(response) {
         var data = {};
         for(el in response.data) {
             try {
