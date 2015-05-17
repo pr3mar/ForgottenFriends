@@ -84,7 +84,7 @@ $("#calculate").click(function(){
             try {
                 var likes = response.data[el].likes.data;
                 for (person in likes) {
-                    if (likes[person].name in likes) {
+                    if (likes[person].name in data) {
                         data[likes[person].name][0] += 1;
                     } else {
                         data[likes[person].name] = [1, 0];
@@ -92,8 +92,7 @@ $("#calculate").click(function(){
                 }
                 var comments = response.data[el].comments.data;
                 for (person in likes) {
-                    //console.log(likes[person]);
-                    if (comments[person].name in likes) {
+                    if (comments[person].name in data) {
                         data[comments[person].name][1] += 1;
                     } else {
                         data[comments[person].name] = [0, 1];
