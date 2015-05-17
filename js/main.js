@@ -70,12 +70,17 @@ function getMessages(data, me) {
         }
         data = sortMapByValue(data);
         //console.log(data);
+        var newData = [];
         for(i = 0; i < data.length; i++) {
-            console.log(data[i][0], data[i][1][0], data[i][1][1], data[i][1][2]);
+            newData[i].push(data[i][0]);
+            newData[i].push(data[i][1][1] / data[i][1][0]);
+            newData[i].push(data[i][1][2]);
+            console.log(newData[i][1])
+            console.log(newData[i][0], newData[i][1], newData[i][2]);
         }
         criticalIndex = getCriticalIndex(data);
-        printMoreThanWeek(data, criticalIndex);
-        printDeletionProposal(data, criticalIndex);
+        printMoreThanWeek(newData, criticalIndex);
+        printDeletionProposal(newData, criticalIndex);
     });
 }
 
