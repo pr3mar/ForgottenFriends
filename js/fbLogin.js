@@ -72,36 +72,3 @@ function initializeData() {
             ' <p><a class="btn btn-default" role="button" id="calculate">Calculate &raquo;</a></p>';
     });
 }
-
-$("#calculate").click(function(){
-    console.log('Welcome!  Fetching your information.... ');
-    var d = new Date();
-    d.setMonth(d.getMonth() - 3);
-    FB.api('/me/posts',{'since': d.toISOString(),'limit': '500'}, function(response) {
-        var data = {};
-        for(el in response.data) {
-            try {
-                var likes = response.data[el].likes.data;
-                var comments = response.data[el].comments.data;
-                for (person in likes) {
-                    if (likes[person].name in data) {
-                        data[likes[person].name][0] += 1;
-                    } else {
-                        data[likes[person].name] = [1, 0];
-                    }
-                }
-                for (person in comments) {
-                    console.log(comments[person].from.name);
-                    if (comments[person].from.name in data) {
-                        data[comments[person].from.name][1] += 1;
-                    } else {
-                        data[comments[person].from.name] = [0, 1];
-                    }
-                }
-            } catch(e) {
-                //console.log("undefined");
-            }
-        }
-        console.log("likes:", data);
-    });
-});
