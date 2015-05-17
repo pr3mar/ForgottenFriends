@@ -68,7 +68,7 @@ function getMessages(data, me) {
                 }
             }
         }
-        data = sortMapByValue(data);
+        data  = sortMapByValue(data);
         //console.log(data);
         criticalIndex = getCriticalIndex(data);
         var newData = [];
