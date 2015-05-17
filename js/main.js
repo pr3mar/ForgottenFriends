@@ -45,10 +45,10 @@ function getMessages(data) {
     var d = new Date();
     d.setMonth(d.getFullYear() - 1);
     console.log("messages:")
-    FB.api('/me/inbox',{'since': d.toISOString()/*,'limit': '500'*/}, function(response) {
+    FB.api('/me/inbox',{/*'since': d.toISOString()*/'limit': '500'}, function(response) {
         console.log(response);
         for(i in response.data) {
-            console.log(response.data[i].to.name);
+            console.log(response.data[i].to);
         }
     });
 }
