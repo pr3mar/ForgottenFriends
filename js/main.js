@@ -86,7 +86,6 @@ function getMessages(data, me) {
         console.log(newData);
         printMoreThanWeek(newData, criticalIndex);
         printDeletionProposal(newData, criticalIndex);
-
     });
 }
 
