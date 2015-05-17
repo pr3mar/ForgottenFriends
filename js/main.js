@@ -94,7 +94,7 @@ function getCriticalIndex(data) {
 }
 
 function printMoreThanWeek(data, criticalIndex) {
-    console.log("test");
+    console.log(data);
     for(var i = criticalIndex; i > (criticalIndex - 5); i--){
         console.log(data[i]);
     }
