@@ -103,8 +103,8 @@ function printMoreThanWeek(data, criticalIndex) {
     document.getElementById("forgotten").innerHTML =
         '<table class="table table-striped">' +
             '<thead><tr><td>Name</td><td>FB Link</td></tr></thead>' +
-            '<tbody><tr><th>' + data[criticalIndex][0] + '</th><th>https://www.facebook.com/' + data[criticalIndex][2] + '</th></tr>' +
-            '<tr><th>' + data[criticalIndex-1][0] + '</th><th>https://www.facebook.com/' + data[criticalIndex-1][2] + '</th></tr></tbody></table>';
+            '<tbody><tr><th><a href="https://www.facebook.com/'+ data[criticalIndex][2] + '">' + data[criticalIndex][0] + '</a></th></tr>' +
+            '<tr><th><a href="https://www.facebook.com/'+ data[criticalIndex - 1][2] + '">' + data[criticalIndex-1][0] +'</a></th></tr></tbody></table>'; //'</th><th>https://www.facebook.com/' + data[criticalIndex-1][2] + '</th></tr></tbody></table>';
     /*for(i = criticalIndex; i > (criticalIndex - 5); i--){
         document.getElementById("tabela-forgotten").innerHTML = '<tr><th>' + data[i] + '</th></tr>'
     }*/
