@@ -72,10 +72,11 @@ function getMessages(data, me) {
         //console.log(data);
         var newData = [];
         for(i = 0; i < data.length; i++) {
+            newData.push([]);
             newData[i].push(data[i][0]);
             newData[i].push(data[i][1][1] / data[i][1][0]);
             newData[i].push(data[i][1][2]);
-            console.log(newData[i][1])
+            //console.log(newData[i][1])
             console.log(newData[i][0], newData[i][1], newData[i][2]);
         }
         criticalIndex = getCriticalIndex(data);
