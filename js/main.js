@@ -54,13 +54,14 @@ function getMessages(data, me) {
             for(j in thread.to.data) {
                 //console.log(j, thread.to.data[j].name, thread.to.data[j].id, me);
                 if(thread.to.data[j].name in data && thread.to.data[j].id != me) {
-                    console.log(thread.to.data[j].name, new Date().getTime(), new Date(response.data[i].updated_time).getTime());
-                    var tmp = new Date().getTime() - new Date(response.data[i].updated_time).getTime();
+                    var tmp = (new Date().getTime()) - (new Date(response.data[i].updated_time)).getTime();
+                    console.log(thread.to.data[j].name, (new Date()).getTime(), (new Date(response.data[i].updated_time)).getTime(), tmp);
                     if(data[thread.to.data[j].name].length == 2) {
                         data[thread.to.data[j].name].push(tmp);
                     } else if(data[thread.to.data[j].name][2] > tmp) {
                         data[thread.to.data[j].name][2] = tmp;
                     }
+                    console.log(data[thread.to.data[j].name]);
                 }
             }
         }
