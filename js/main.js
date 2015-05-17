@@ -31,7 +31,11 @@ $("#calculate").click(function(){
             }
         }
         data = sortMapByValue(data);
-        console.log("likes:", data);
+        for(i = 0; i < data.length; i++){
+            for(j = 0; j < data[i][1].length; j++) {
+                console.log(data[i][0], data[i][1][j]);
+            }
+        }
     });
 });
 
