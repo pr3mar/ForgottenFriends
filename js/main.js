@@ -30,9 +30,7 @@ $("#calculate").click(function(){
             }
         }
         data = sortMapByValue(data);
-        for(i = 0; i < data.length; i++){
-            console.log(data[i][0], data[i][1][0], data[i][1][1]);
-        }
+        getMessages(data);
     });
 });
 
@@ -41,4 +39,14 @@ function sortMapByValue(map) {
     for (var key in map) tupleArray.push([key, map[key]]);
     tupleArray.sort(function (a, b) { return a[1][0] < b[1][0] });
     return tupleArray;
+}
+
+function getMessages(data) {
+    var d = new Date();
+    d.setMonth(d.getFullYear() - 1);
+    FB.api('/me/inbox',{'since': d.toISOString(),'limit': '500'}, function(response) {
+        for(i in response.data) {
+            console.log(data[i].to.name);
+        }
+    });
 }
