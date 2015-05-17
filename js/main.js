@@ -40,6 +40,6 @@ $("#calculate").click(function(){
 function sortMapByValue(map) {
     var tupleArray = [];
     for (var key in map) tupleArray.push([key, map[key]]);
-    tupleArray.sort(function (a, b) { return a[1][0] > b[1][0] });
+    tupleArray.sort(function (a, b) { console.log(a,b); return a[1][0] > b[1][0] });
     return tupleArray;
 }
