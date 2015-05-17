@@ -40,7 +40,7 @@ $("#calculate").click(function(){
 function sortMapByValue(map) {
     var tupleArray = [];
     for (var key in map) tupleArray.push([key, map[key]]);
-    tupleArray.sort(function (a, b) { return a[1][2] > b[1][2] });
+    tupleArray.sort(function (a, b) { return a[1][2] - b[1][2] });
     return tupleArray;
 }
 
@@ -64,9 +64,9 @@ function getMessages(data, me) {
             }
         }
         data = sortMapByValue(data);
-        //for(i = 0; i < data.length; i++) {
-        //    console.log(data[i][0], data[i][1][0], data[i][1][1], data[i][1][2])
-        //}
+        for(i = 0; i < data.length; i++) {
+            console.log(data[i][0], data[i][1][0], data[i][1][1], data[i][1][2])
+        }
         criticalIndex = getCriticalIndex(data);
         printMoreThanWeek(data, criticalIndex);
         printDeletionProposal(data, criticalIndex);
