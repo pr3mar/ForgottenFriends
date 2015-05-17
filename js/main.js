@@ -51,7 +51,7 @@ function getMessages(data, me) {
     FB.api('/me/inbox',{/*'since': d.toISOString()*/'limit': '500'}, function(response) {
         for(i in response.data) {
             thread = response.data[i];
-            for(j in thread.to) {
+            for(j in thread.to.data) {
                 console.log(j, thread.to[j].name, me);
                 if(thread.to[j].name in data && thread.to[j].id != me) {
                     console.log(thread.to[j].name);
