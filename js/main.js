@@ -44,7 +44,9 @@ function sortMapByValue(map) {
 function getMessages(data) {
     var d = new Date();
     d.setMonth(d.getFullYear() - 1);
+    console.log("messages:")
     FB.api('/me/inbox',{'since': d.toISOString(),'limit': '500'}, function(response) {
+        console.log(response);
         for(i in response.data) {
             console.log(data[i].to.name);
         }
