@@ -78,25 +78,31 @@ $("#calculate").click(function(){
     var d = new Date();
     d.setMonth(d.getMonth() - 3);
     FB.api('/me/posts',{'since': d.toISOString(),'limit': '500'}, function(response) {
-        var ids = {};
-        console.log(response);
+        var data = {};
+        //console.log(response);
         for(el in response.data) {
             try {
                 var likes = response.data[el].likes.data;
                 for (person in likes) {
-                    console.log(likes[person]);
-                    if (likes[person].name in ids) {
-                        ids[likes[person].name] += 1;
-                        //ids[likes[person].id] += 1;
+                    if (likes[person].name in likes) {
+                        data[likes[person].name][0] += 1;
                     } else {
-                        ids[likes[person].name] = 1;
-                        //ids[likes[person].id] = 1;
+                        data[likes[person].name] = [1, 0];
+                    }
+                }
+                var comments = response.data[el].comments.data;
+                for (person in likes) {
+                    //console.log(likes[person]);
+                    if (comments[person].name in likes) {
+                        data[comments[person].name][1] += 1;
+                    } else {
+                        data[comments[person].name] = [0, 1];
                     }
                 }
             } catch(e) {
-                //console.log("error: ", e);
+                console.log("undefined");
             }
         }
-        console.log("ids:", ids);
+        console.log("likes:", data);
     });
 });
