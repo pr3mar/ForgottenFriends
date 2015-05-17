@@ -99,6 +99,7 @@ function getCriticalIndex(data) {
 }
 
 function printMoreThanWeek(data, criticalIndex) {
+    console.log(data);
     console.log(criticalIndex);
     document.getElementById("forgotten").innerHTML =
         '<table class="table table-striped"><thead><tr><td>Name</td><td>FB Link</td></tr></thead><tbody><tr><th>' + data[criticalIndex].split(",")[0] + '</th><th>' + data[criticalIndex].split(",")[2] + '</th></tr></tbody></table>';
