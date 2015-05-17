@@ -53,7 +53,7 @@ function getMessages(data, me) {
     d.setMonth(d.getFullYear() - 1);
     console.log("messages:");
     FB.api('/me/inbox',{/*'since': d.toISOString()*/'limit': '500'}, function(response) {
-        console.log(response);
+        //console.log(response);
         for(i in response.data) {
             thread = response.data[i];
             for(j in thread.to.data) {
@@ -69,7 +69,7 @@ function getMessages(data, me) {
             }
         }
         data = sortMapByValue(data);
-        console.log(data);
+        //console.log(data);
         var newData = [];
         for(i = 0; i < data.length; i++) {
             newData.push([]);
@@ -77,7 +77,7 @@ function getMessages(data, me) {
             newData[i].push(data[i][1][1] / data[i][1][0]);
             newData[i].push(data[i][1][2]);
             //console.log(newData[i][1])
-            console.log(newData[i][0], newData[i][1], newData[i][2]);
+            //console.log(newData[i][0], newData[i][1], newData[i][2]);
         }
         criticalIndex = getCriticalIndex(data);
         printMoreThanWeek(newData, criticalIndex);
