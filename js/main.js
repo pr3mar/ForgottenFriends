@@ -30,7 +30,10 @@ $("#calculate").click(function(){
             }
         }
         data = sortMapByValue(data);
-        getMessages(data);
+        FB.api('/me', function(response){
+            getMessages(data, response.id);
+        });
+
     });
 });
 
@@ -41,14 +44,20 @@ function sortMapByValue(map) {
     return tupleArray;
 }
 
-function getMessages(data) {
+function getMessages(data, me) {
     var d = new Date();
     d.setMonth(d.getFullYear() - 1);
     console.log("messages:")
     FB.api('/me/inbox',{/*'since': d.toISOString()*/'limit': '500'}, function(response) {
-        console.log(response);
         for(i in response.data) {
-            console.log(response.data[i].to);
+            thread = response.data[i];
+            for(j in thread.to) {
+                if(thread[j].name in data && thread[j].id != me) {
+                    console.log(thread[j].name);
+                    data[j][1].push(new Date().getMilliseconds() - new Date(response.data[i].updated_time).getMilliseconds());
+                }
+            }
         }
+        console.log(data);
     });
 }
