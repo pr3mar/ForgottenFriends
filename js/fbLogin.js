@@ -83,7 +83,7 @@ $("#calculate").click(function(){
         for(el in response.data) {
             try {
                 var likes = response.data[el].likes.data;
-                var comments = response.data[el].comments.data;
+                var comments = response.data[el].comments.data.from;
                 for (person in likes) {
                     if (likes[person].name in data) {
                         data[likes[person].name][0] += 1;
