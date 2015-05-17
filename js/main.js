@@ -73,13 +73,13 @@ function getMessages(data, me) {
         criticalIndex = getCriticalIndex(data);
         var newData = [];
         for(i = 0; i < data.length; i++) {
-            FB.api(data[i][1][2]+"/picture", function (response) {
-                newData.push([]);
-                newData[i].push(data[i][0]);
-                newData[i].push(data[i][1][1] / data[i][1][0]);
-                newData[i].push(data[i][1][2]);
-                newData[i].push(response.data.url);
-            });
+            newData.push([]);
+            newData[i].push(data[i][0]);
+            newData[i].push(data[i][1][1] / data[i][1][0]);
+            newData[i].push(data[i][1][2]);
+            //FB.api(newData[i][2]+"/picture", function (response) {
+            //    newData[i].push(response.data.url);
+            //});
             //console.log(newData[i][1])
             //console.log(newData[i][0], newData[i][1], newData[i][2]);
         }
@@ -101,10 +101,10 @@ function getCriticalIndex(data) {
 function printMoreThanWeek(data, criticalIndex) {
     console.log(criticalIndex);
     document.getElementById("forgotten").innerHTML =
-        '<table class="table table-striped"><thead><tr><td>Name</td><td>FB Link</td></tr></thead><tbody><tr><th>' + data[criticalIndex] + '</th></tr></tbody></table>';
-    /*for(i = criticalIndex; i > (criticalIndex - 5); i--){
+        '<table class="table table-striped"><thead><tr><td>Name</td><td>FB Link</td></tr></thead><tbody id="tabela-forgotten"></tbody></table>';
+    for(i = criticalIndex; i > (criticalIndex - 5); i--){
         document.getElementById("tabela-forgotten").innerHTML = '<tr><th>' + data[i] + '</th></tr>'
-    }*/
+    }
 }
 
 function printDeletionProposal(data, criticalIndex) {
