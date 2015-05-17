@@ -52,8 +52,9 @@ function getMessages(data, me) {
         for(i in response.data) {
             thread = response.data[i];
             for(j in thread.to) {
-                if(thread[j].name in data && thread[j].id != me) {
-                    console.log(thread[j].name);
+                console.log(j, thread.to);
+                if(thread.to[j].name in data && thread.to[j].id != me) {
+                    console.log(thread.to[j].name);
                     data[j][1].push(new Date().getMilliseconds() - new Date(response.data[i].updated_time).getMilliseconds());
                 }
             }
