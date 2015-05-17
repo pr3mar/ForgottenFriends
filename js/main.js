@@ -64,9 +64,9 @@ function getMessages(data, me) {
             }
         }
         data = sortMapByValue(data);
-        //for(i = 0; i < data.length; i++) {
-        //    console.log(data[i][0], data[i][1][0], data[i][1][1], data[i][1][2])
-        //}
+        for(i = 0; i < data.length; i++) {
+            console.log(data[i][0], data[i][1][0], data[i][1][1], data[i][1][2])
+        }
         criticalIndex = getCriticalIndex(data);
         printMoreThanWeek(data, criticalIndex);
         printDeletionProposal(data, criticalIndex);
