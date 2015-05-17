@@ -70,6 +70,7 @@ function getMessages(data, me) {
         }
         data = sortMapByValue(data);
         //console.log(data);
+        criticalIndex = getCriticalIndex(data);
         var newData = [];
         for(i = 0; i < data.length; i++) {
             newData.push([]);
@@ -79,7 +80,7 @@ function getMessages(data, me) {
             //console.log(newData[i][1])
             //console.log(newData[i][0], newData[i][1], newData[i][2]);
         }
-        criticalIndex = getCriticalIndex(data);
+        console.log(newData);
         printMoreThanWeek(newData, criticalIndex);
         printDeletionProposal(newData, criticalIndex);
     });
