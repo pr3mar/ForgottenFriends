@@ -20,7 +20,7 @@ $("#calculate").click(function(){
                             if (likes[person].name in data && likes[person].name != me) {
                                 data[likes[person].name][0] += 1;
                             } else if(likes[person].name != me) {
-                                data[likes[person].name] = [1, Number.MAX_VALUE, id];
+                                data[likes[person].name] = [1, Number.MAX_VALUE, likes[person].id];
                             }
                         }
                     });
