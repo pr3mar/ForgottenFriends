@@ -20,7 +20,7 @@ $("#calculate").click(function(){
                             if (likes[person].name in data && likes[person].name != me) {
                                 data[likes[person].name][0] += 1;
                             } else if(likes[person].name != me) {
-                                data[likes[person].name] = [1, Number.MAX_VALUE];
+                                data[likes[person].name] = [1, Number.MAX_VALUE, id];
                             }
                         }
                     });
@@ -71,7 +71,7 @@ function getMessages(data, me) {
         data = sortMapByValue(data);
         //console.log(data);
         for(i = 0; i < data.length; i++) {
-            console.log(data[i][0], data[i][1][0], data[i][1][1])
+            console.log(data[i][0], data[i][1][0], data[i][1][1], data[i][1][2]);
         }
         criticalIndex = getCriticalIndex(data);
         printMoreThanWeek(data, criticalIndex);
