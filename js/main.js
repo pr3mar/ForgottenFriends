@@ -88,7 +88,7 @@ function getMessages(data, me) {
 
 function getCriticalIndex(data) {
     for(i = 0; i < data.length; i++) {
-        if(data[i][1][2] == Number.MAX_VALUE) {
+        if(data[i][1][1] == Number.MAX_VALUE) {
             return i;
         }
     }
