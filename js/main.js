@@ -29,7 +29,7 @@ $("#calculate").click(function(){
                 //console.log("undefined");
             }
         }
-        data = sortMapByValue(data);
+        //data = sortMapByValue(data);
         FB.api('/me', function(response){
             getMessages(data, response.id);
         });
