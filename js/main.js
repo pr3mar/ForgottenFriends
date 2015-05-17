@@ -69,7 +69,7 @@ function getMessages(data, me) {
             }
         }
         data = sortMapByValue(data);
-        //console.log(data);
+        console.log(data);
         var newData = [];
         for(i = 0; i < data.length; i++) {
             newData.push([]);
